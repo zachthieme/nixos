@@ -64,22 +64,28 @@ in
   home.packages = [
     # x tools
     pkgs.alacritty
-    pkgs.vscode
     pkgs.google-chrome
+    pkgs.vscode
 
     # Command line tools
-    pkgs.mosh
-#    pkgs.fish
     pkgs.git 
-    unstable.ansible
-    pkgs.wget
+    pkgs.mosh
     pkgs.tmux
+    pkgs.wget
+    unstable.ansible
     unstable.helix
     unstable.starship
-#    unstable.gh
 
     # xmonad stuff
     unstable.rofi
+
+    # faster newer better terminal tools
+    unstable.bat
+    unstable.exa
+    unstable.fd
+    unstable.gitui
+    unstable.rargs
+    unstable.ripgrep
 
   ];
 
