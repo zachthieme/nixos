@@ -81,6 +81,7 @@
           vim-smoothie
           nerdtree
           vim-easymotion
+#          toggleterm-nvim 
           vim-nix
         ];
        extraConfig = builtins.readFile ./nvim/init.vim;
