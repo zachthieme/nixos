@@ -19,7 +19,7 @@ in
     gh.enable = true;
     fish = {
       enable = true;
-      interactiveShellInit = "starship init fish | source";
+      interactiveShellInit = builtins.readFile ./fish/config.fish;  # "starship init fish | source";
      # plugins = [
      #   fish_vi_key_bindings
      # ];
