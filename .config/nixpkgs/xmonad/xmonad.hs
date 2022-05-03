@@ -8,9 +8,12 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Ungrab
 
+-- import XMonad.Actions.GroupNavigation
+
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spacing 
+import XMonad.Layout.PerScreen
 
 import XMonad.Hooks.EwmhDesktops
 
@@ -27,10 +30,12 @@ myConfig = def
   `additionalKeysP`
     [ ("M-]"  , spawn "chromium-browser"                   )
     , ("M-d"  , spawn "rofi -show run"                   )
+--		, ((mod1,           xK_Tab   ), nextMatch Forward isOnAnyVisibleWS)
+--    , ((mod1 .|. shift, xK_Tab   ), nextMatch Backward isOnAnyVisibleWS)
     ]
--- TODO: add customization for when in ipad screen 
+
 --   < dimensions:    1366x980 pixels (361x259 millimeters)
-myLayout = threeCol ||| tiled ||| Full 
+myLayout = ifWider 1366 (threeCol ||| tiled ||| Full) Full 
   where
     threeCol = ThreeColMid nmaster delta ratio
 --    threeCol = magnifiercz' 1.3 $ ThreeColMid nmaster delta ratio
