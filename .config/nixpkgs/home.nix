@@ -19,7 +19,7 @@
 
   home.packages = [
     # x tools
-    pkgs.alacritty
+    pkgs.kitty
     pkgs.google-chrome
     pkgs.vscode
 
@@ -30,7 +30,6 @@
     pkgs.wget
     unstable.ansible
     unstable.helix
-#    unstable.neovim
     unstable.starship
 
     # xmonad stuff
