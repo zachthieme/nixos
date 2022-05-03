@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> {};
-in
+ let
+   unstable = import <nixos-unstable> {};
+ in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -13,18 +13,50 @@ in
     file."starship.toml".source = ./starship/starship.toml;
     file.".tmux.conf".source = ./tmux/tmux.conf;
   };
-  # setup my git configurations
+
+  # enable unFree programs (code, chrome) to be installed
+  nixpkgs.config.allowUnfree = true;
+
+  home.packages = [
+    # x tools
+    pkgs.alacritty
+    pkgs.google-chrome
+    pkgs.vscode
+
+    # Command line tools
+    pkgs.git 
+    pkgs.mosh
+    pkgs.tmux
+    pkgs.wget
+    unstable.ansible
+    unstable.helix
+#    unstable.neovim
+    unstable.starship
+
+    # xmonad stuff
+    unstable.rofi
+
+    # faster newer better terminal tools
+    unstable.bat
+    unstable.exa
+    unstable.fd
+    unstable.gitui
+    unstable.rargs
+    unstable.ripgrep
+
+  ];
+
   programs = {
     home-manager.enable = true;
-    gh.enable = true;
+
+    #  set fish shell configuration file
     fish = {
       enable = true;
-      interactiveShellInit = builtins.readFile ./fish/config.fish;  # "starship init fish | source";
-     # plugins = [
-     #   fish_vi_key_bindings
-     # ];
+      interactiveShellInit = builtins.readFile ./fish/config.fish;
     };
 
+    # setup my git configurations
+    gh.enable = true;
     git = {
       enable= true;
       userName = "zachthieme";
@@ -35,10 +67,11 @@ in
     };
 
     neovim = {
+      package = unstable.neovim-unwrapped;
       enable = true;
       viAlias = true;
       vimAlias = true;
-      plugins = with pkgs.vimPlugins;
+      plugins = with unstable.vimPlugins;
         [
           vim-airline 
           (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars ))
@@ -57,38 +90,6 @@ in
 
   home.stateVersion = "21.11";
 
-
-  # enable unFree programs (code, chrome) to be installed
-  nixpkgs.config.allowUnfree = true;
-
-  home.packages = [
-    # x tools
-    pkgs.alacritty
-    pkgs.google-chrome
-    pkgs.vscode
-
-    # Command line tools
-    pkgs.git 
-    pkgs.mosh
-    pkgs.tmux
-    pkgs.wget
-    unstable.ansible
-    unstable.helix
-    unstable.starship
-
-    # xmonad stuff
-    unstable.rofi
-
-    # faster newer better terminal tools
-    unstable.bat
-    unstable.exa
-    unstable.fd
-    unstable.gitui
-    unstable.rargs
-    unstable.ripgrep
-
-  ];
-
   xsession = {
     enable = true;
 
@@ -104,5 +105,6 @@ in
         config = ./xmonad/xmonad.hs;
       };
     }; 			
+
   };
 }
