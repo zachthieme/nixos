@@ -16,6 +16,7 @@ in
   # setup my git configurations
   programs = {
     home-manager.enable = true;
+    gh.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = "starship init fish | source";
@@ -75,7 +76,7 @@ in
     pkgs.tmux
     unstable.helix
     unstable.starship
-    unstable.gh
+#    unstable.gh
 
     # xmonad stuff
     unstable.rofi
