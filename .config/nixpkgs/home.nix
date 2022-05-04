@@ -12,6 +12,8 @@
     # source config files
     file."starship.toml".source = ./starship/starship.toml;
     file.".tmux.conf".source = ./tmux/tmux.conf;
+    file."key_bindings.ron".source = ./gitui/key_bindings.ron;
+    file."config.toml".source = ./helix/config.toml;
   };
 
   # enable unFree programs (code, chrome) to be installed
