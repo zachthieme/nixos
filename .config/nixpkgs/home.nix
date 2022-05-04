@@ -24,10 +24,12 @@
     pkgs.vscode
 
     # Command line tools
+    pkgs.git
     pkgs.mosh
     pkgs.tmux
     pkgs.wget
     unstable.ansible
+    unstable.comma
     unstable.helix
     unstable.starship
 

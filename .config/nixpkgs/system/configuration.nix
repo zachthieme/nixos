@@ -94,7 +94,6 @@
   # install packages
   environment.systemPackages = with pkgs; [
     wget
-    git
     alacritty
     firefox
     tmux
