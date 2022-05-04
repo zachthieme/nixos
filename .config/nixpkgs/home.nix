@@ -33,6 +33,7 @@
     unstable.helix
     unstable.nix-index
     unstable.starship
+    unstable.yad
 
     # faster newer better terminal tools
     unstable.ansible

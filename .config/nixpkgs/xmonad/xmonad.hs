@@ -7,6 +7,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.Ungrab
+import XMonad.Util.NamedScratchpad
 
 -- import XMonad.Actions.GroupNavigation
 
@@ -26,12 +27,19 @@ myConfig = def
     , terminal   = "kitty"
     , focusFollowsMouse = False 
     , layoutHook = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ myLayout
+		, manageHook = myManageHook
     }
   `additionalKeysP`
     [ ("M-]"  , spawn "chromium-browser"                   )
     , ("M-d"  , spawn "rofi -show run"                   )
 --		, ((mod1,           xK_Tab   ), nextMatch Forward isOnAnyVisibleWS)
 --    , ((mod1 .|. shift, xK_Tab   ), nextMatch Backward isOnAnyVisibleWS)
+    ]
+
+myManageHook :: ManageHook
+myManageHook = composeAll
+    [ className =? "yad" --> doFloat
+    , isDialog            --> doFloat
     ]
 
 --   < dimensions:    1366x980 pixels (361x259 millimeters)
@@ -43,3 +51,4 @@ myLayout = ifWider 1366 (threeCol ||| tiled ||| Full) Full
     nmaster  = 1      -- Default number of windows in the master pane
     ratio    = 1/3    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
+
