@@ -31,6 +31,7 @@
     unstable.ansible
     unstable.comma
     unstable.helix
+    unstable.nix-index
     unstable.starship
 
     # faster newer better terminal tools
