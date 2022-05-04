@@ -32,12 +32,14 @@
     unstable.starship
 
     # faster newer better terminal tools
+    unstable.ansible
     unstable.bat
     unstable.exa
     unstable.fd
     unstable.gitui
     unstable.rargs
     unstable.ripgrep
+    unstable.rage
   ];
 
   programs = {
