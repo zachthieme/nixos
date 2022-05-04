@@ -31,8 +31,8 @@ myConfig = def
     }
   `additionalKeysP`
     [ ("M-]"  , spawn "chromium-browser"                   )
---    , ("M-d"  , spawn "rofi -show run"                   )
     , ("M-d"  , spawn "rofi -show drun  modi drun"                   )
+    , ("M-/"  , spawn "/home/zach/.config/nixpkgs/xmonad/xmonad_keys.sh"                   )
 --		, ((mod1,           xK_Tab   ), nextMatch Forward isOnAnyVisibleWS)
 --    , ((mod1 .|. shift, xK_Tab   ), nextMatch Backward isOnAnyVisibleWS)
     ]
