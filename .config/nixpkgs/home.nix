@@ -110,7 +110,7 @@
         extraPackages = haskellPackages: [
           unstable.haskellPackages.xmonad  
           unstable.haskellPackages.xmonad-contrib
-          unstable.haskellPackages.xmonad-extras  
+          unstable.haskellPackages.xmonad-extras 
         ];
         config = ./xmonad/xmonad.hs;
       };

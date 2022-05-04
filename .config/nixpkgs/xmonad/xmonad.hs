@@ -20,6 +20,7 @@ import XMonad.Hooks.EwmhDesktops
 
 main :: IO ()
 main = xmonad
+		 . ewmh
      $ myConfig
 
 myConfig = def
@@ -33,8 +34,6 @@ myConfig = def
     [ ("M-]"  , spawn "chromium-browser"                   )
     , ("M-d"  , spawn "rofi -show drun  modi drun"                   )
     , ("M-/"  , spawn "/home/zach/.config/nixpkgs/xmonad/xmonad_keys.sh"                   )
---		, ((mod1,           xK_Tab   ), nextMatch Forward isOnAnyVisibleWS)
---    , ((mod1 .|. shift, xK_Tab   ), nextMatch Backward isOnAnyVisibleWS)
     ]
 
 myManageHook :: ManageHook
