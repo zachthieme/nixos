@@ -39,8 +39,8 @@ myConfig = def
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "yad" --> doFloat
-    , isDialog            --> doFloat
+    [ className =? "Yad" --> doFloat
+--    , isDialog            --> doFloat
     ]
 
 --   < dimensions:    1366x980 pixels (361x259 millimeters)
