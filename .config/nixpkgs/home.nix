@@ -24,16 +24,12 @@
     pkgs.vscode
 
     # Command line tools
-    pkgs.git 
     pkgs.mosh
     pkgs.tmux
     pkgs.wget
     unstable.ansible
     unstable.helix
     unstable.starship
-
-    # xmonad stuff
-    unstable.rofi
 
     # faster newer better terminal tools
     unstable.bat
@@ -42,7 +38,6 @@
     unstable.gitui
     unstable.rargs
     unstable.ripgrep
-
   ];
 
   programs = {
@@ -85,6 +80,13 @@
           vim-nix
         ];
        extraConfig = builtins.readFile ./nvim/init.vim;
+    };
+
+    rofi = {
+      enable = true;
+      package = unstable.rofi;
+      terminal = "${pkgs.kitty}/bin/kitty";
+#      theme = ./rofi/theme.rafi;
     };
   };	
 

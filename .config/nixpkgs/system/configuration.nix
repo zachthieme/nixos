@@ -94,6 +94,9 @@
   # install packages
   environment.systemPackages = with pkgs; [
     wget
+    git
+    alacritty
+    firefox
     tmux
     (
       with import <nixpkgs> {};
@@ -116,3 +119,4 @@
   system.stateVersion = "21.11"; # Did you read the comment?
 
 }
+
