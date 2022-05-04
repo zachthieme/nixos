@@ -1,0 +1,19 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Roam Research
+Exec=google-chrome-stable --profile-directory=Default --app-id=lflgehidkjooeaeclhaadoefaleoeged
+Icon=chrome-lflgehidkjooeaeclhaadoefaleoeged-Default
+StartupWMClass=crx_lflgehidkjooeaeclhaadoefaleoeged
+Actions=All-Graphs;Quick-Capture
+
+[Desktop Action All-Graphs]
+Name=All Graphs
+Exec=google-chrome-stable --profile-directory=Default --app-id=lflgehidkjooeaeclhaadoefaleoeged "--app-launch-url-for-shortcuts-menu-item=https://roamresearch.com/#/app"
+
+[Desktop Action Quick-Capture]
+Name=Quick Capture
+Exec=google-chrome-stable --profile-directory=Default --app-id=lflgehidkjooeaeclhaadoefaleoeged "--app-launch-url-for-shortcuts-menu-item=https://roamresearch.com/#/quick-capture"
+OnlyShowIn=Old;
