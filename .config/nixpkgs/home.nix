@@ -32,6 +32,7 @@
     pkgs.tmux
     pkgs.wget
     unstable.ansible
+    unstable.autojump
     unstable.comma
     unstable.helix
     unstable.nix-index
@@ -41,18 +42,20 @@
     unstable.yad
 
     # faster newer better terminal tools
-    unstable.ansible
     unstable.bat
     unstable.exa
     unstable.fd
     unstable.gitui
+    unstable.rage
     unstable.rargs
     unstable.ripgrep
-    unstable.rage
   ];
 
   programs = {
     home-manager.enable = true;
+
+    # set autojump config
+    autojump.enableFishIntegration = true;
 
     #  set fish shell configuration file
     fish = {
