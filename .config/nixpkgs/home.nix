@@ -36,6 +36,7 @@
     unstable.comma
     unstable.helix
     unstable.nix-index
+    unstable.nix-tree
     unstable.qmk
     unstable.qmk-udev-rules
     unstable.starship
@@ -46,6 +47,7 @@
     unstable.exa
     unstable.fd
     unstable.gitui
+#    unstable.polybar
     unstable.rage
     unstable.rargs
     unstable.ripgrep
@@ -109,6 +111,8 @@
   xsession = {
     enable = true;
 
+#    initExtra = polybarOpts;
+
     windowManager = {
       xmonad = {
         enable = true;  
@@ -122,5 +126,15 @@
       };
     }; 			
 
+  };
+
+  services.polybar = {
+    enable = true;
+#    package = mypolybar;
+    config = /home/zach/.config/nixpkgs/polybar/config;
+#    extraConfig = bars + colors + mods1 + mods2 + customMods;
+    script = ''
+      polybar & disown 
+    '';
   };
 }
