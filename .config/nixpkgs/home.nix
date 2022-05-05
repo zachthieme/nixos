@@ -10,10 +10,11 @@
     homeDirectory = "/home/zach";
 
     # source config files
-    file."starship.toml".source = ./starship/starship.toml;
-    file.".tmux.conf".source = ./tmux/tmux.conf;
-    file."key_bindings.ron".source = ./gitui/key_bindings.ron;
-    file."config.toml".source = ./helix/config.toml;
+    file."/home/zach/.config/starship.toml".source = ./starship/starship.toml;
+    file."/home/zach/.tmux.conf".source = ./tmux/tmux.conf;
+    file."/home/zach/.config/gitui/key_bindings.ron".source = ./gitui/key_bindings.ron;
+    file."/home/zach/.config/helix/config.toml".source = ./helix/config.toml;
+    file."/home/zach/.config/kitty/kitty.conf".source = ./kitty/kitty.conf;
   };
 
   # enable unFree programs (code, chrome) to be installed
@@ -34,6 +35,8 @@
     unstable.comma
     unstable.helix
     unstable.nix-index
+    unstable.qmk
+    unstable.qmk-udev-rules
     unstable.starship
     unstable.yad
 
