@@ -41,6 +41,9 @@
     # development tools
     unstable.yarn
 
+    # depoloyment tools
+    unstable.nixops
+
     # needed for my polybar configs
 #    unstable.polybar
     unstable.yad
@@ -50,8 +53,6 @@
     unstable.nix-index     # builds indext so comma can find commands
 
     # needed for qmk
-#    unstable.qmk
-#    unstable.qmk-udev-rules
     unstable.docker
 
     # faster newer better terminal tools
