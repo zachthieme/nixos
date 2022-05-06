@@ -49,6 +49,9 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
+  # Enable Docker
+  virtualisation.docker.enable = true;
+
   # Enable the X11 windowing system.
   services = {
     xserver = {
@@ -60,6 +63,11 @@
       displayManager.lightdm.enable = true;
       windowManager.i3.enable = true;
       windowManager.xmonad.enable = true;
+    };
+
+    dbus = {
+      enable = true;
+      packages = [ pkgs.gnome3.dconf ];
     };
 
     # needed for store VSCode auth token
@@ -85,7 +93,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zach = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
    };
 
   # add wheel users to sudoers

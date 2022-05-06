@@ -34,13 +34,13 @@
     unstable.ansible
     unstable.autojump
     unstable.comma
+    unstable.docker
     unstable.helix
     unstable.nix-index
     unstable.nix-tree
-    unstable.qmk
-    unstable.qmk-udev-rules
     unstable.starship
     unstable.yad
+    unstable.yarn
 
     # faster newer better terminal tools
     unstable.bat
@@ -94,6 +94,7 @@
           vim-easymotion
 #          toggleterm-nvim 
           vim-nix
+          vim-lsp
         ];
        extraConfig = builtins.readFile ./nvim/init.vim;
     };
