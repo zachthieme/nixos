@@ -95,6 +95,7 @@
 #          toggleterm-nvim 
           vim-nix
           vim-lsp
+          nvim-lspconfig
         ];
        extraConfig = builtins.readFile ./nvim/init.vim;
     };
@@ -129,13 +130,13 @@
 
   };
 
-  services.polybar = {
-    enable = true;
-#    package = mypolybar;
-    config = /home/zach/.config/nixpkgs/polybar/config;
-#    extraConfig = bars + colors + mods1 + mods2 + customMods;
-    script = ''
-      polybar & disown 
-    '';
-  };
+#   services.polybar = {
+#     enable = true;
+# #    package = mypolybar;
+#     config = /home/zach/.config/nixpkgs/polybar/config;
+# #    extraConfig = bars + colors + mods1 + mods2 + customMods;
+#     script = ''
+#       polybar & disown 
+#     '';
+#   };
 }
