@@ -15,6 +15,7 @@
     file."/home/zach/.config/gitui/key_bindings.ron".source = ./gitui/key_bindings.ron;
     file."/home/zach/.config/helix/config.toml".source = ./helix/config.toml;
     file."/home/zach/.config/kitty/kitty.conf".source = ./kitty/kitty.conf;
+    file."/home/zach/.config/rofi/spotlight.rasi".source = ./rofi/spotlight.rasi;
   };
 
   # enable unFree programs (code, chrome) to be installed
@@ -31,26 +32,35 @@
     pkgs.mosh
     pkgs.tmux
     pkgs.wget
-    unstable.ansible
-    unstable.autojump
-    unstable.comma
-    unstable.docker
-    unstable.helix
-    unstable.nix-index
-    unstable.nix-tree
-    unstable.starship
-    unstable.yad
+    unstable.ansible       # used to encrypt/decrypt secrets 
+    unstable.autojump      # used to move between directories fast
+    unstable.helix         # fun vim/kakoune style editor with sane defaults
+    unstable.nix-tree      # check dependency tree for nix packages
+    unstable.starship      # rust based shell prompt that is pretty
+
+    # development tools
     unstable.yarn
 
-    # faster newer better terminal tools
-    unstable.bat
-    unstable.exa
-    unstable.fd
-    unstable.gitui
+    # needed for my polybar configs
 #    unstable.polybar
-    unstable.rage
-    unstable.rargs
-    unstable.ripgrep
+    unstable.yad
+
+    # needed to install comma which allows us to run commands that aren't on our machine
+    unstable.comma         
+    unstable.nix-index     # builds indext so comma can find commands
+
+    # needed for qmk
+#    unstable.qmk
+#    unstable.qmk-udev-rules
+    unstable.docker
+
+    # faster newer better terminal tools
+    unstable.bat           # improved cat
+    unstable.exa           # improved ls
+    unstable.fd            # improved find
+    unstable.gitui
+    unstable.rargs         # similar to xargs
+    unstable.ripgrep       # improved grep
   ];
 
   programs = {
@@ -104,7 +114,7 @@
       enable = true;
       package = unstable.rofi;
       terminal = "${pkgs.kitty}/bin/kitty";
-#      theme = ./rofi/theme.rafi;
+      theme = ./rofi/spotlight.rasi;
     };
   };	
 
