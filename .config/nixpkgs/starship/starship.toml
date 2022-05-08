@@ -14,5 +14,5 @@ disabled = true
 truncation_length = 100
 truncate_to_repo = false
 style = " yellow"
-format = "[:$path]($style)[$read_only]($read_only_style) "
+format = "[ $path]($style)[$read_only]($read_only_style) "
 

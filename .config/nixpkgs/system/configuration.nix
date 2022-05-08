@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+ let
+   unstable = import <nixos-unstable> {};
+ in
 
 {
   imports =
@@ -119,6 +122,10 @@
         vimrcConfig.plug.plugins = with pkgs.vimPlugins; [vim-nix];
       }
      )
+
+     # needed to install comma which allows us to run commands that aren't on our machine
+     unstable.comma         
+     unstable.nix-index     # builds indext so comma can find commands
   ];
 
   nixpkgs.config.allowUnfree = true;

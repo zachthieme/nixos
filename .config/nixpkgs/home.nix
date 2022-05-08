@@ -48,10 +48,6 @@
 #    unstable.polybar
     unstable.yad
 
-    # needed to install comma which allows us to run commands that aren't on our machine
-    unstable.comma         
-    unstable.nix-index     # builds indext so comma can find commands
-
     # needed for qmk
     unstable.docker
 
