@@ -19,6 +19,7 @@
   # enable automatic garbage collection
   nix.gc.automatic = true;
   nix.gc.dates = "18:00";
+  nix.autoOptimiseStore = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
