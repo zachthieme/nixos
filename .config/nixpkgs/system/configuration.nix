@@ -33,6 +33,10 @@
     interfaces = {
       enp0s21f0u5.useDHCP = true;
       wlp2s0.useDHCP = true;
+      usb0.ipv4.addresses = [ {
+        address = "10.0.30.2";
+        prefixLength = 24;
+      } ];
     };
 
     # Open ports in the firewall.
@@ -130,6 +134,45 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (pself: psuper: {
+      msd = pself.extend (self: super: {
+      extra_utils = [ ];
+      initrd_script = ''
+      truncate -s $((1024*1024*64)) disk.img
+      modprobe -v dwc2
+      modprobe -v usb_f_acm
+      modprobe -v usb_f_mass_storage
+      modprobe -v usb_f_rndis
+      cd /sys/kernel/config/usb_gadget
+      mkdir g1
+      cd g1
+      mkdir functions/acm.GS0
+      mkdir functions/mass_storage.GS0
+      echo 1 > functions/mass_storage.GS0/lun.0/removable
+      if [ -e /dev/mmcblk0 ]; then
+      echo /dev/mmcblk0 > functions/mass_storage.GS0/lun.0/file
+      else
+      echo /disk.img > functions/mass_storage.GS0/lun.0/file
+      fi
+      mkdir functions/rndis.GS0
+      mkdir configs/c.1
+      mkdir configs/c.1/strings/0x409
+      echo "Serial Console + MSD" > configs/c.1/strings/0x409/configuration
+      mkdir strings/0x409
+      echo "Zach Thieme" > strings/0x409/manufacturer
+      echo "Mobile" > strings/0x409/product
+      grep Serial /proc/cpuinfo  | cut -c19-26 > strings/0x409/serialnumber
+      ln -sv functions/acm.GS0 configs/c.1
+      #ln -sv functions/mass_storage.GS0 configs/c.1
+      ln -sv functions/rndis.GS0 configs/c.1
+      echo fe980000.usb > UDC
+      cd /
+      getty 0 /dev/ttyGS0 &
+      sleep 5
+    '';
+    });
+  })];
 
   system.stateVersion = "21.11"; # Did you read the comment?
 
