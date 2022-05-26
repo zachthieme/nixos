@@ -1,5 +1,6 @@
 set -x STARSHIP_CONFIG $HOME/.config/starship.toml
 set -x HELIX_RUNTIME $HOME/.config/helix/runtime
+set -x EDITOR nvim
 
 set -g fish_term24bit 1
 set -g theme_nerd_fonts yes
@@ -28,8 +29,8 @@ alias a='exa -a'
 alias dc='diff /etc/nixos/configuration.nix ~/.config/nixpkgs/system/configuration.nix'
 alias cc='cp /etc/nixos/configuration.nix ~/.config/nixpkgs/system/configuration.nix'
 
-# alias nf='fdfind . /home/zach/.config -H --changed-within 1d -E Code -E chromium -x /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME ls-files --others {} | sort | uniq'
-# alias nfa='fdfind . /home/zach/.config -H --changed-within 1d -E chromium -x /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME ls-files --others {} | uniq | rargs /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add {0}'
+alias nf='fd . /home/zach/.config -H --changed-within 1d -E Code -E google-chrome -x /home/zach/.nix-profile/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME ls-files --others {} | sort | uniq'
+alias nfa='fd . /home/zach/.config -H --changed-within 1d -E chromium -x /home/zach/.nix-profile/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME ls-files --others {} | uniq | rargs /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add {0}'
 
 
 

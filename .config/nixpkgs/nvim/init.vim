@@ -27,6 +27,9 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" enable smooth scrolling
+let g:smoothie_enabled = 1
+
 " default nerdtree to showing hidded files
 let NERDTreeShowHidden=1
 

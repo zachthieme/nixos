@@ -16,6 +16,7 @@
     file."/home/zach/.config/helix/config.toml".source = ./helix/config.toml;
     file."/home/zach/.config/kitty/kitty.conf".source = ./kitty/kitty.conf;
     file."/home/zach/.config/rofi/spotlight.rasi".source = ./rofi/spotlight.rasi;
+    file."/home/zach/.config/awesome/rc.lua".source = ./awesome/rc.lua;
   };
 
   # enable unFree programs (code, chrome) to be installed
@@ -37,6 +38,8 @@
     unstable.helix         # fun vim/kakoune style editor with sane defaults
     unstable.nix-tree      # check dependency tree for nix packages
     unstable.starship      # rust based shell prompt that is pretty
+    unstable.bundler       # used for jekyll
+    unstable.jekyll        # used for jekyll
 
     # development tools
     unstable.yarn
@@ -49,15 +52,17 @@
     unstable.yad
 
     # needed for qmk
-    unstable.docker
+    unstable.docker        # using docker to build qmk firmware
 
     # faster newer better terminal tools
     unstable.bat           # improved cat
     unstable.exa           # improved ls
     unstable.fd            # improved find
-    unstable.gitui
+    unstable.gitui         # lazy way to manage git
     unstable.rargs         # similar to xargs
     unstable.ripgrep       # improved grep
+    unstable.tealdeer      # rust version of tldr that shows simple man
+    unstable.zenith        # top like tools with graphs 
   ];
 
   programs = {
@@ -104,7 +109,7 @@
           vim-lsp
           nvim-lspconfig
         ];
-       extraConfig = builtins.readFile ./nvim/init.vim;
+        extraConfig = builtins.readFile ./nvim/init.vim;
     };
 
     rofi = {
@@ -123,16 +128,26 @@
 #    initExtra = polybarOpts;
 
     windowManager = {
-      xmonad = {
-        enable = true;  
-        enableContribAndExtras = true;
-        extraPackages = haskellPackages: [
-          unstable.haskellPackages.xmonad  
-          unstable.haskellPackages.xmonad-contrib
-          unstable.haskellPackages.xmonad-extras 
+      awesome = {
+        enable = true;
+        luaModules = with pkgs.luaPackages; [
+          luarocks # is the package manager for Lua modules
+          luadbi-mysql # Database abstraction layer
         ];
-        config = ./xmonad/xmonad.hs;
+
       };
+
+#      xmonad = {
+#        enable = true;  
+#        enableContribAndExtras = true;
+#        extraPackages = haskellPackages: [
+#          unstable.haskellPackages.xmonad  
+#          unstable.haskellPackages.xmobar
+#          unstable.haskellPackages.xmonad-contrib
+#          unstable.haskellPackages.xmonad-extras 
+#        ];
+#        config = ./xmonad/xmonad.hs;
+#      };
     }; 			
 
   };
